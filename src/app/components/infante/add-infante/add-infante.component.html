@@ -1,0 +1,144 @@
+<div class="wrapper">
+  <!-- menubar  -->
+  <app-menubar></app-menubar>
+  <!-- end menubar-->
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <!--navbar-->
+    <app-navbar></app-navbar>
+    <!--fin navbar-->
+
+    <div class="card">
+      <div class="card-header">
+        <b>REGISTRAR INFANTE</b>
+      </div>
+      <div class="card-body">
+
+        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+          <li *ngFor="let err of errores">
+            {{ err }}
+          </li>
+        </ul>
+
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Nombres:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombres" [(ngModel)]="infante.nombre" name="nombre">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Apellidos:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="infante.apellido" name="apellido">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Dirección:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="infante.direccion" name="direccion">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label>Sexo:</label>
+              <div class="input-group mb-3">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sexo" value="M" [(ngModel)]="infante.sexo">
+                  <label class="form-check-label">Masculino</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="sexo" value="V" [(ngModel)]="infante.sexo">
+                  <label class="form-check-label">Femenino</label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Teléfono:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="infante.telefono" name="telefono">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Fecha de nacimiento:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="date" class="form-control" [(ngModel)]="infante.fechanacimiento" name="fechanacimiento">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Nivel Socioeconómico:</label>
+              <select class="form-control" [(ngModel)]="infante.nivelsocioeconomico" name="nivelsocioeconomico">
+                <option value="undefined">---Seleccionar un nivel---</option>
+                <option value="A">NSE A</option>
+                <option value="B">NSE B</option>
+                <option value="C">NSE C</option>
+                <option value="D">NSE D</option>
+                <option value="E">NSE E</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label>Nivel de Educación:</label>
+              <select class="form-control" [(ngModel)]="infante.niveleducacion" name="niveleducacion">
+                <option value="undefined">---Seleccionar un nivel---</option>
+                <option value="Inicial">Inicial</option>
+                <option value="Primaria">Primaria</option>
+                <option value="Secundaria">Secundaria</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Grado:</label>
+              <select class="form-control" [(ngModel)]="infante.grado" name="grado">
+                <option value="undefined">---Seleccionar un grado---</option>
+                <option value="1">Primero</option>
+                <option value="2">Segundo</option>
+                <option value="3">Tercero</option>
+                <option value="4">Cuarto</option>
+                <option value="5">Quinto</option>
+                <option value="6">Sexto</option>
+              </select>
+            </div>
+          </div>
+
+          <br>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button class="btn btn-primary" role="button" (click)="create()">Crear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
