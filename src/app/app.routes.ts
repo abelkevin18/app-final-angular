@@ -4,6 +4,7 @@ import { AddUsuarioComponent } from './components/usuario/add-usuario/add-usuari
 import { HomeComponent } from './components/home/home.component';
 import { AddInfanteComponent } from './components/infante/add-infante/add-infante.component';
 import { ListInfanteComponent } from './components/infante/list-infante/list-infante.component';
+import { EditInfanteComponent } from './components/infante/edit-infante/edit-infante.component';
 
 
 export const routes: Routes = [
@@ -12,6 +13,7 @@ export const routes: Routes = [
     { path: 'add-usuario', component: AddUsuarioComponent },
     { path: 'add-infante', component: AddInfanteComponent },
     { path: 'list-infante', component: ListInfanteComponent },
+    { path: 'edit-infante/:id', component: EditInfanteComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

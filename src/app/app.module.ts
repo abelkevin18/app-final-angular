@@ -15,6 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AddInfanteComponent } from './components/infante/add-infante/add-infante.component';
 import { ListInfanteComponent } from './components/infante/list-infante/list-infante.component';
 import { NavbarComponent } from './components/partials/navbar/navbar.component';
+import { EditInfanteComponent } from './components/infante/edit-infante/edit-infante.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NavbarComponent } from './components/partials/navbar/navbar.component';
     HomeComponent,
     AddInfanteComponent,
     ListInfanteComponent,
-    NavbarComponent
+    NavbarComponent,
+    EditInfanteComponent
   ],
   imports: [
     BrowserModule,

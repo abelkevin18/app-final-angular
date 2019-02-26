@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable,of, throwError } from 'rxjs';
 import { Infante } from '../model/infante';
 import { map, tap, catchError } from 'rxjs/operators';
-
+import swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
@@ -54,4 +54,28 @@ export class InfanteService {
       })
     );
   }
+
+  getInfante(id:number): Observable<Infante>{
+    return this.http.get<Infante>(`${this.urlEndPoint}/${id}`)
+    .pipe(
+      catchError(e => {
+        this.router.navigate(['/list-infante']);
+        swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+  update(infante: Infante): Observable<any> {
+    return this.http
+    .put<any>(`${this.urlEndPoint}/${infante.idpersona}`, infante, {headers: this.httpHeaders})
+    .pipe(
+      catchError(e => {
+        if(e.status==400) {
+          return throwError(e);
+        }
+      })
+    );
+  }
+   
 }
