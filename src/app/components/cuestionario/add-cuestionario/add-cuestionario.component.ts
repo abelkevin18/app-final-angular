@@ -3,7 +3,10 @@ import { Itemcuestionario } from '../itemcuestionario';
 import { Detallecuestionario } from 'src/app/model/detallecuestionario';
 import { Cuestionario } from 'src/app/model/cuestionario';
 import { ModalInfanteService } from './modal-infante.service';
-
+import { ModalProfesorService } from './modal-profesor.service';
+import { CuestionarioService } from 'src/app/service/cuestionario.service';
+import swal from 'sweetalert2';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-cuestionario',
   templateUrl: './add-cuestionario.component.html',
@@ -35,23 +38,55 @@ export class AddCuestionarioComponent implements OnInit {
 
   ];
 
-  constructor(private modalInfanteService: ModalInfanteService) { }
+  constructor(private modalInfanteService: ModalInfanteService,
+    private modalProfesorService: ModalProfesorService,
+    private cuestionarioService: CuestionarioService,
+    private router: Router) { }
 
   private errores: string[];
 
   ngOnInit() {
+
+    this.modalInfanteService.notificarUpload
+    .subscribe(
+      infante => {
+        this.cuestionario.infante = infante
+      } 
+    );
+
+    this.modalProfesorService.notificarUpload
+    .subscribe(
+      profesor => {
+        this.cuestionario.profesor = profesor;
+      }
+    )
   }
 
-  funcion(): void {
-    this.cuestionario.fecha="2019-02-27";
+  saveCuestionario(): void {
+    //this.cuestionario.fecha="2019-02-27";
     this.cuestionario.nombre="DSM-V";
 
     this.cuestionario.detallecuestionarios = this.cuestionario.detallecuestionarios.map((item: Detallecuestionario) => {
-      console.log(item.numeroitem);
-      console.log(item.descripcionitem);
-      console.log(item.respuestaitem);
+      //console.log(item.numeroitem+ " "+ item.descripcionitem+" "+item.respuestaitem);
       return item;
     });
+
+    /*console.log(this.cuestionario.infante);
+    console.log(this.cuestionario.profesor);
+    console.log(this.cuestionario.fecha);*/
+
+    this.cuestionarioService.create(this.cuestionario)
+      .subscribe(json => {
+        this.router.navigate(['/list-infante']);
+        swal.fire('Nuevo cuestionario', `Cuestionario almacenado con éxito!`,'success');
+      },
+        err => {
+          this.errores = err.error.errors as string[];
+          swal.fire('Error!', `Revise el formulario y vuelva a intentarlo !`,'error');
+          console.error('Codigo del error desde el backend: ' + err.status);
+          console.error(err.error.errors);
+        }
+      );
 
   }
 
@@ -65,6 +100,9 @@ export class AddCuestionarioComponent implements OnInit {
     nuevoItem.respuestaitem = event.target.value;
 
     this.cuestionario.detallecuestionarios.push(nuevoItem);
+
+    
+    
     /*console.log(nuevoItem.numeroitem);
     console.log(nuevoItem.descripcionitem);*
     console.log(nuevoItem.respuestaitem);*/
@@ -73,6 +111,10 @@ export class AddCuestionarioComponent implements OnInit {
   abrirModal(): void {
 
     this.modalInfanteService.abrirModal();
+  }
+
+  abrirModal2(): void {
+    this.modalProfesorService.abrirModal();
   }
 
 

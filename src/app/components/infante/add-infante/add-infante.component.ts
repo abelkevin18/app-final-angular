@@ -21,9 +21,9 @@ export class AddInfanteComponent implements OnInit {
   }
 
   create(): void {
-    
-    console.log(this.infante);
-  
+
+    //console.log(this.infante);
+
     this.infanteService.create(this.infante)
       .subscribe(json => {
         this.router.navigate(['/list-infante']);
@@ -31,7 +31,7 @@ export class AddInfanteComponent implements OnInit {
       },
         err => {
           this.errores = err.error.errors as string[];
-          console.error('Codigo del error desde el backend: '+err.status);
+          console.error('Codigo del error desde el backend: ' + err.status);
           console.error(err.error.errors);
         }
       );

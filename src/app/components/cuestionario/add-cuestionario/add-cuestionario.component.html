@@ -39,7 +39,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="date" class="form-control">
+                <input type="date" class="form-control" [(ngModel)]="cuestionario.fecha" name="fecha">
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="text" class="form-control">
+                <input *ngIf="cuestionario.infante" type="text" class="form-control" value="{{cuestionario.infante.nombre}} {{cuestionario.infante.apellido}}">
                 <div class="input-group-append">
                   <button class="btn btn-outline-light" type="button" (click) = "abrirModal()"><img src="../../../assets/img/search.png"></button>
                 </div>
@@ -64,9 +64,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="text" class="form-control">
+                <input *ngIf="cuestionario.profesor" type="text" class="form-control" value="{{cuestionario.profesor.nombre}} {{cuestionario.profesor.apellido}}">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-light" type="button"><img src="../../../assets/img/search.png"></button>
+                  <button class="btn btn-outline-light" type="button" (click) = "abrirModal2()"><img src="../../../assets/img/search.png"></button>
                 </div>
               </div>
             </div>
@@ -93,9 +93,10 @@
           </tbody>
         </table>
 
-        <button (click)="funcion()">gg</button>
+        <button type="button" class="btn btn-info" (click)="saveCuestionario()"><i class="far fa-save"></i> Guardar</button>
       </div>
     </div>
   </div>
 </div>
 <app-search-infante></app-search-infante>
+<app-search-profesor></app-search-profesor>
