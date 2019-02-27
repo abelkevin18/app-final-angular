@@ -13,7 +13,7 @@ export class InfanteService {
   //private urlEndPoint:string = 'https://app-tdah.herokuapp.com/api/infantes';
   private urlEndPoint:string = 'http://localhost:8080/api/infantes';
   
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'})
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -77,5 +77,19 @@ export class InfanteService {
       })
     );
   }
+
+  delete(id: number): Observable<Infante>{
+    return this.http
+    .delete<Infante>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+    .pipe( 
+      catchError(e => {
+        this.router.navigate(['/list-infante']);
+        swal.fire('Error al eliminar al infante', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+
    
 }

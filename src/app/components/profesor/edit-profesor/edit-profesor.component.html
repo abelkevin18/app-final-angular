@@ -1,0 +1,105 @@
+<div class="wrapper">
+    <!-- menubar  -->
+    <app-menubar></app-menubar>
+    <!-- end menubar-->
+  
+    <!-- Page Content  -->
+    <div id="content">
+  
+      <!--navbar-->
+      <app-navbar></app-navbar>
+      <!--fin navbar-->
+  
+      <div class="card">
+        <div class="card-header">
+          <b>EDITAR PROFESOR</b>
+        </div>
+        <div class="card-body">
+  
+          <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+            <li *ngFor="let err of errores">
+              {{ err }}
+            </li>
+          </ul>
+  
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Nombres:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Nombres" [(ngModel)]="profesor.nombre" name="nombre">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label>Apellidos:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="profesor.apellido" name="apellido">
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <label>Dirección:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="profesor.direccion" name="direccion">
+                </div>
+              </div>
+  
+              <div class="col-md-6">
+                <label>Sexo:</label>
+                <div class="input-group mb-3">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" value="M" [(ngModel)]="profesor.sexo">
+                    <label class="form-check-label">Masculino</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="sexo" value="F" [(ngModel)]="profesor.sexo">
+                    <label class="form-check-label">Femenino</label>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+  
+            <div class="row">
+              <div class="col-md-6">
+                <label>Teléfono:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="profesor.telefono" name="telefono">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label>Fecha de nacimiento:</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                  </div>
+                  <input type="date" class="form-control" [(ngModel)]="profesor.fechanacimiento" name="fechanacimiento">
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-group row">
+              <div class="col-sm-6">
+                <button class="btn btn-warning" role="button" (click)="editar()">Editar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

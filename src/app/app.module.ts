@@ -16,6 +16,9 @@ import { AddInfanteComponent } from './components/infante/add-infante/add-infant
 import { ListInfanteComponent } from './components/infante/list-infante/list-infante.component';
 import { NavbarComponent } from './components/partials/navbar/navbar.component';
 import { EditInfanteComponent } from './components/infante/edit-infante/edit-infante.component';
+import { AddProfesorComponent } from './components/profesor/add-profesor/add-profesor.component';
+import { ListProfesorComponent } from './components/profesor/list-profesor/list-profesor.component';
+import { EditProfesorComponent } from './components/profesor/edit-profesor/edit-profesor.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { EditInfanteComponent } from './components/infante/edit-infante/edit-inf
     AddInfanteComponent,
     ListInfanteComponent,
     NavbarComponent,
-    EditInfanteComponent
+    EditInfanteComponent,
+    AddProfesorComponent,
+    ListProfesorComponent,
+    EditProfesorComponent
   ],
   imports: [
     BrowserModule,

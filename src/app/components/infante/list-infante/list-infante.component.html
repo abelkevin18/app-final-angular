@@ -38,7 +38,7 @@
               <td>
                 <div class="btn-group" role="group">
                   <button type="button" name="editar" [routerLink]="['/edit-infante', infante.idpersona]" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></button>
-                  <button type="button" name="eliminar" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                  <button type="button" name="eliminar" class="btn btn-danger btn-sm" (click)='delete(infante)'><i class="fas fa-trash"></i></button>
                 </div>
               </td>
             </tr>
