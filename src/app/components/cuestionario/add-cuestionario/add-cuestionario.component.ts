@@ -7,15 +7,15 @@ import { ModalProfesorService } from './modal-profesor.service';
 import { CuestionarioService } from 'src/app/service/cuestionario.service';
 import swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Resultadocuestionario } from 'src/app/model/resultadocuestionario';
+import { Detalleresultado } from 'src/app/model/detalleresultado';
+import { ResultadocuestionarioService } from 'src/app/service/resultadocuestionario.service';
 @Component({
   selector: 'app-add-cuestionario',
   templateUrl: './add-cuestionario.component.html',
   styles: []
 })
 export class AddCuestionarioComponent implements OnInit {
-  //private detalleCuestionario: Detallecuestionario = new Detallecuestionario();
-  private cuestionario: Cuestionario = new Cuestionario();
-
   itemCuestionario = [
     new Itemcuestionario(1, 'Con frecuencia falla en PRESTAR la debida atención a los detalles o por descuido se cometen errores en las tareas escolares, en el trabajo o durante otras actividades (por ejemplo, se pasan por alto o se pierden detalles).'),
     new Itemcuestionario(2, 'Con frecuencia tiene dificultades para mantener la atención en tareas o actividades recreativas (por ejemplo, tiene dificultad para mantener la atención en clases, conversaciones o lectura prolongada).'),
@@ -38,9 +38,14 @@ export class AddCuestionarioComponent implements OnInit {
 
   ];
 
+  private cuestionario: Cuestionario = new Cuestionario();
+  private resultadoCuestionario: Resultadocuestionario = new Resultadocuestionario();
+
+
   constructor(private modalInfanteService: ModalInfanteService,
     private modalProfesorService: ModalProfesorService,
     private cuestionarioService: CuestionarioService,
+    private resultadoCuestionarioService: ResultadocuestionarioService,
     private router: Router) { }
 
   private errores: string[];
@@ -48,23 +53,23 @@ export class AddCuestionarioComponent implements OnInit {
   ngOnInit() {
 
     this.modalInfanteService.notificarUpload
-    .subscribe(
-      infante => {
-        this.cuestionario.infante = infante
-      } 
-    );
+      .subscribe(
+        infante => {
+          this.cuestionario.infante = infante
+        }
+      );
 
     this.modalProfesorService.notificarUpload
-    .subscribe(
-      profesor => {
-        this.cuestionario.profesor = profesor;
-      }
-    )
+      .subscribe(
+        profesor => {
+          this.cuestionario.profesor = profesor;
+        }
+      )
   }
 
   saveCuestionario(): void {
     //this.cuestionario.fecha="2019-02-27";
-    this.cuestionario.nombre="DSM-V";
+    this.cuestionario.nombre = "DSM-V";
 
     this.cuestionario.detallecuestionarios = this.cuestionario.detallecuestionarios.map((item: Detallecuestionario) => {
       //console.log(item.numeroitem+ " "+ item.descripcionitem+" "+item.respuestaitem);
@@ -77,12 +82,69 @@ export class AddCuestionarioComponent implements OnInit {
 
     this.cuestionarioService.create(this.cuestionario)
       .subscribe(json => {
-        this.router.navigate(['/list-infante']);
-        swal.fire('Nuevo cuestionario', `Cuestionario almacenado con éxito!`,'success');
+        //console.log(json.cuestionario);
+        this.resultadoCuestionario.cuestionario = json.cuestionario;
+        this.resultadoCuestionario.apreciacion = 'por ahora no hay diagnostico';
+        /*Operaciones para el resultado */
+        let puntajeH: number = 0;
+        let puntajeI: number = 0;
+        let puntajeDA: number = 0;
+        for (let lista of this.cuestionario.detallecuestionarios) {
+          let numItem: number = lista.numeroitem;
+          switch (true) {
+            case (numItem < 10 && lista.respuestaitem === "V"):
+              puntajeDA += 1;
+              break;
+            case (numItem < 16 && lista.respuestaitem === "V"):
+              puntajeH += 1;
+              break;
+            case (numItem < 19 && lista.respuestaitem === "V"):
+              puntajeI += 1;
+              break;
+            default:
+              console.log("none");
+              break;
+          }
+        }
+
+        let detalleResultado1 = new Detalleresultado();
+        let detalleResultado2 = new Detalleresultado();
+        let detalleResultado3 = new Detalleresultado();
+
+        detalleResultado1.criterio = 'Hiperactividad';
+        detalleResultado1.puntuacion = puntajeH;
+
+        detalleResultado2.criterio = 'Impulsividad';
+        detalleResultado2.puntuacion = puntajeI;
+
+        detalleResultado3.criterio = 'Déficit de Atención';
+        detalleResultado3.puntuacion = puntajeDA;
+
+        this.resultadoCuestionario.detalleresultados.push(detalleResultado1);
+        this.resultadoCuestionario.detalleresultados.push(detalleResultado2);
+        this.resultadoCuestionario.detalleresultados.push(detalleResultado3);
+
+        //console.log(puntajeDA + " " + puntajeH + " " + puntajeI);
+        console.log(this.resultadoCuestionario);
+        
+        /*this.router.navigate(['/list-infante']);
+        swal.fire('Nuevo cuestionario', `Cuestionario almacenado con éxito!`, 'success');*/
+        this.resultadoCuestionarioService.create(this.resultadoCuestionario)
+        .subscribe(json => {
+          this.router.navigate(['/list-infante']);
+          swal.fire('Nuevo cuestionario', `Cuestionario almacenado con éxito!`, 'success');
+        },
+          err => {
+            this.errores = err.error.errors as string[];
+            console.error('Codigo del error desde el backend: ' + err.status);
+            console.error(err.error.errors);
+          }
+        );
+
       },
         err => {
           this.errores = err.error.errors as string[];
-          swal.fire('Error!', `Revise el formulario y vuelva a intentarlo !`,'error');
+          swal.fire('Error!', `Revise el formulario y vuelva a intentarlo !`, 'error');
           console.error('Codigo del error desde el backend: ' + err.status);
           console.error(err.error.errors);
         }
@@ -101,8 +163,8 @@ export class AddCuestionarioComponent implements OnInit {
 
     this.cuestionario.detallecuestionarios.push(nuevoItem);
 
-    
-    
+
+
     /*console.log(nuevoItem.numeroitem);
     console.log(nuevoItem.descripcionitem);*
     console.log(nuevoItem.respuestaitem);*/
