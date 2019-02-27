@@ -8,6 +8,8 @@ import { EditInfanteComponent } from './components/infante/edit-infante/edit-inf
 import { AddProfesorComponent } from './components/profesor/add-profesor/add-profesor.component';
 import { ListProfesorComponent } from './components/profesor/list-profesor/list-profesor.component';
 import { EditProfesorComponent } from './components/profesor/edit-profesor/edit-profesor.component';
+import { AddCuestionarioComponent } from './components/cuestionario/add-cuestionario/add-cuestionario.component';
+import { SearchInfanteComponent } from './components/cuestionario/add-cuestionario/search-infante/search-infante.component';
 
 
 export const routes: Routes = [
@@ -20,6 +22,7 @@ export const routes: Routes = [
     { path: 'add-profesor', component: AddProfesorComponent },
     { path: 'list-profesor', component: ListProfesorComponent },
     { path: 'edit-profesor/:id', component: EditProfesorComponent },
+    { path: 'add-cuestionario', component: AddCuestionarioComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

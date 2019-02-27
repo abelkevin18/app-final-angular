@@ -19,6 +19,8 @@ import { EditInfanteComponent } from './components/infante/edit-infante/edit-inf
 import { AddProfesorComponent } from './components/profesor/add-profesor/add-profesor.component';
 import { ListProfesorComponent } from './components/profesor/list-profesor/list-profesor.component';
 import { EditProfesorComponent } from './components/profesor/edit-profesor/edit-profesor.component';
+import { AddCuestionarioComponent } from './components/cuestionario/add-cuestionario/add-cuestionario.component';
+import { SearchInfanteComponent } from './components/cuestionario/add-cuestionario/search-infante/search-infante.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { EditProfesorComponent } from './components/profesor/edit-profesor/edit-
     EditInfanteComponent,
     AddProfesorComponent,
     ListProfesorComponent,
-    EditProfesorComponent
+    EditProfesorComponent,
+    AddCuestionarioComponent,
+    SearchInfanteComponent
   ],
   imports: [
     BrowserModule,

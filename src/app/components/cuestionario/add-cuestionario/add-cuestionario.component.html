@@ -1,0 +1,101 @@
+<div class="wrapper">
+  <!-- menubar  -->
+  <app-menubar></app-menubar>
+  <!-- end menubar-->
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <!--navbar-->
+    <app-navbar></app-navbar>
+    <!--fin navbar-->
+
+    <div class="card">
+      <div class="card-header">
+        <b>REGISTRAR CUESTIONARIO</b>
+      </div>
+      <div class="card-body">
+
+        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+          <li *ngFor="let err of errores">
+            {{ err }}
+          </li>
+        </ul>
+
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Nombre Encuesta: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" value="DSM-V" disabled>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Fecha: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Infante encuestado: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-light" type="button" (click) = "abrirModal()"><img src="../../../assets/img/search.png"></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Profesor responsable: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-light" type="button"><img src="../../../assets/img/search.png"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+        <table class="table table-bordered table-striped">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">N° Item</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">SI</th>
+              <th scope="col">NO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of itemCuestionario; let i = index" [attr.data-index]="i">
+              <td>{{item.numeroItem}}</td>
+              <td>{{item.descripcion}} </td>
+              <td><input type="radio" name="{{i}}" value="V" (change)="changeRadio($event)"></td>
+              <td><input type="radio" name="{{i}}" value="F" (change)="changeRadio($event)"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button (click)="funcion()">gg</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-search-infante></app-search-infante>
