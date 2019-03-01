@@ -20,6 +20,7 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">Nombres y Apellidos</th>
+              <th scope="col">D.N.I.</th>
               <th scope="col">Telefono</th>
               <th scope="col">Direccion</th>
               <th scope="col"></th>
@@ -28,6 +29,7 @@
           <tbody>
             <tr *ngFor="let profesor of profesores">
               <td>{{profesor.nombre}} {{profesor.apellido}}</td>
+              <td>{{profesor.dni}} </td>
               <td>{{profesor.telefono}}</td>
               <td>{{profesor.direccion}}</td>
               <td>

@@ -34,7 +34,6 @@ export class EditInfanteComponent implements OnInit {
   editar(): void {
     
     this.infante.cuestionarios = null;
-    this.infante.historiasclinicas = null;
 
     this.infanteService.update(this.infante)
     .subscribe(

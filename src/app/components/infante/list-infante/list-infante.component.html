@@ -21,20 +21,22 @@
           <thead class="thead-light">
             <tr>
               <th scope="col">Nombres y Apellidos</th>
+              <th scope="col">D.N.I.</th>
               <th scope="col">Telefono</th>
               <th scope="col">Direccion</th>
-              <th scope="col">Grado</th>
               <th scope="col">F.N.</th>
+              <th scope="col">I.E.</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let infante of infantes">
               <td>{{infante.nombre}} {{infante.apellido}}</td>
+              <td>{{infante.dni}}</td>
               <td>{{infante.telefono}}</td>
               <td>{{infante.direccion}}</td>
-              <td>{{infante.grado}}</td>
               <td>{{infante.fechanacimiento | date:"EEEE dd, MMMM yyyy"}}</td>
+              <td>{{infante.institucioneducativa.nombre}} </td>
               <td>
                 <div class="btn-group" role="group">
                   <button type="button" name="editar" [routerLink]="['/edit-infante', infante.idpersona]" class="btn btn-primary btn-sm"><i class="fas fa-user-edit"></i></button>

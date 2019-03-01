@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <!-- menubar  -->
+  <!-- end menubar-->
+  <app-menubar></app-menubar>
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <!--navbar-->
+    <app-navbar></app-navbar>
+    <!--fin navbar-->
+
+    <div class="card">
+      <div class="card-header"><b>REPORTE</b></div>
+      <div class="card-body">
+        <button (click)="generarReporte()">View</button>
+        <div>
+          <div style="display: block">
+            <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType"
+                  [colors]="lineChartColors"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

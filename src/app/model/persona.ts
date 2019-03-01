@@ -5,5 +5,6 @@ export class Persona {
     direccion:string;
     sexo:string;
     telefono:string;
+    dni:string;
     fechanacimiento: string;
 }

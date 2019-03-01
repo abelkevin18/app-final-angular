@@ -72,8 +72,34 @@
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-md-6">
+              <label>Grado:</label>
+              <select class="form-control" [(ngModel)]="cuestionario.grado" name="grado">
+                <option value="undefined">---Seleccionar un grado---</option>
+                <option value="Primero">Primero</option>
+                <option value="Segundo">Segundo</option>
+                <option value="Tercero">Tercero</option>
+                <option value="Cuarto">Cuarto</option>
+                <option value="Quinto">Quinto</option>
+                <option value="Sexto">Sexto</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label>Nivel de Educación:</label>
+              <select class="form-control" [(ngModel)]="cuestionario.niveleducacion" name="niveleducacion">
+                <option value="undefined">---Seleccionar un nivel---</option>
+                <option value="Inicial">Inicial</option>
+                <option value="Primaria">Primaria</option>
+                <option value="Secundaria">Secundaria</option>
+              </select>
+            </div>
+          </div>
+
         </form>
 
+        <br>
         <table class="table table-bordered table-striped">
           <thead class="thead-light">
             <tr>
@@ -94,6 +120,7 @@
         </table>
 
         <button type="button" class="btn btn-info" (click)="saveCuestionario()"><i class="far fa-save"></i> Guardar</button>
+        <button class="btn btn-danger" (click)="probarModelo()">Probar</button>
       </div>
     </div>
   </div>

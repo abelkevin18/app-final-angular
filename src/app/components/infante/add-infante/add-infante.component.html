@@ -106,30 +106,18 @@
             </div>
 
             <div class="col-md-6">
-              <label>Nivel de Educación:</label>
-              <select class="form-control" [(ngModel)]="infante.niveleducacion" name="niveleducacion">
-                <option value="undefined">---Seleccionar un nivel---</option>
-                <option value="Inicial">Inicial</option>
-                <option value="Primaria">Primaria</option>
-                <option value="Secundaria">Secundaria</option>
-              </select>
+              <label>Número de D.N.I.:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="D.N.I" [(ngModel)]="infante.dni" name="dni">
+              </div>
             </div>
+
           </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <label>Grado:</label>
-              <select class="form-control" [(ngModel)]="infante.grado" name="grado">
-                <option value="undefined">---Seleccionar un grado---</option>
-                <option value="1">Primero</option>
-                <option value="2">Segundo</option>
-                <option value="3">Tercero</option>
-                <option value="4">Cuarto</option>
-                <option value="5">Quinto</option>
-                <option value="6">Sexto</option>
-              </select>
-            </div>
-          </div>
+          <!---->
 
           <br>
           <div class="form-group row">

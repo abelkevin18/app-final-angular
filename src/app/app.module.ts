@@ -22,7 +22,9 @@ import { EditProfesorComponent } from './components/profesor/edit-profesor/edit-
 import { AddCuestionarioComponent } from './components/cuestionario/add-cuestionario/add-cuestionario.component';
 import { SearchInfanteComponent } from './components/cuestionario/add-cuestionario/search-infante/search-infante.component';
 import { SearchProfesorComponent } from './components/cuestionario/add-cuestionario/search-profesor/search-profesor.component';
+import { ViewReporteComponent } from './components/reporte/view-reporte/view-reporte.component';
 
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -40,12 +42,14 @@ import { SearchProfesorComponent } from './components/cuestionario/add-cuestiona
     EditProfesorComponent,
     AddCuestionarioComponent,
     SearchInfanteComponent,
-    SearchProfesorComponent
+    SearchProfesorComponent,
+    ViewReporteComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
     RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [],

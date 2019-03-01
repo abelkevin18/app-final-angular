@@ -1,6 +1,7 @@
 import { Infante } from './infante';
 import { Profesor } from './profesor';
 import { Detallecuestionario } from './detallecuestionario';
+import { Programa } from './programa';
 
 export class Cuestionario {
     idcuestionario:number;
@@ -9,5 +10,8 @@ export class Cuestionario {
     infante: Infante;
     profesor: Profesor;
     detallecuestionarios: Detallecuestionario[] = [];
+    niveleducacion: string;
+    grado: string;
+    programa: Programa;
     
 }

@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Resultadocuestionario } from 'src/app/model/resultadocuestionario';
 import { Detalleresultado } from 'src/app/model/detalleresultado';
 import { ResultadocuestionarioService } from 'src/app/service/resultadocuestionario.service';
+import { Programa } from 'src/app/model/programa';
 @Component({
   selector: 'app-add-cuestionario',
   templateUrl: './add-cuestionario.component.html',
@@ -41,6 +42,7 @@ export class AddCuestionarioComponent implements OnInit {
   private cuestionario: Cuestionario = new Cuestionario();
   private resultadoCuestionario: Resultadocuestionario = new Resultadocuestionario();
 
+  private programa: Programa = new Programa();
 
   constructor(private modalInfanteService: ModalInfanteService,
     private modalProfesorService: ModalProfesorService,
@@ -68,13 +70,9 @@ export class AddCuestionarioComponent implements OnInit {
   }
 
   saveCuestionario(): void {
-    //this.cuestionario.fecha="2019-02-27";
-    this.cuestionario.nombre = "DSM-V";
 
-    this.cuestionario.detallecuestionarios = this.cuestionario.detallecuestionarios.map((item: Detallecuestionario) => {
-      //console.log(item.numeroitem+ " "+ item.descripcionitem+" "+item.respuestaitem);
-      return item;
-    });
+    
+    this.cuestionario.nombre = "DSM-V";
 
     /*console.log(this.cuestionario.infante);
     console.log(this.cuestionario.profesor);
@@ -180,5 +178,17 @@ export class AddCuestionarioComponent implements OnInit {
   }
 
 
+  probarModelo(): void {
+    /*this.cuestionario.detallecuestionarios = this.cuestionario.detallecuestionarios.map((item: Detallecuestionario) => {
+      console.log(item.numeroitem+ " "+ item.descripcionitem+" "+item.respuestaitem);
+      return item;
+    });*/
+
+    console.log(this.cuestionario);
+
+  
+    
+    
+  }
 
 }

@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import swal from 'sweetalert2';
 import { Resultadocuestionario } from '../model/resultadocuestionario';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,4 +24,27 @@ export class ResultadocuestionarioService {
       })
     );
   }
+
+  getResultados(): Observable<Resultadocuestionario[]> {
+    return this.http.get(this.urlEndPoint).pipe(
+      tap(response => {
+        let resultados = response as Resultadocuestionario[];
+        resultados.forEach(resultado => {
+          //console.log(infante.nombre);
+        })
+      }),
+      map(response => {
+        let resultados = response as Resultadocuestionario[];
+        return resultados.map(resultado => {
+          return resultado;
+        })
+      }),
+      tap(response => {
+        response.forEach(resultado => {
+          //console.log(infante.nombre);
+        })
+      })
+    );
+  }
+  
 }
