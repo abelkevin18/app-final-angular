@@ -25,6 +25,7 @@ import { SearchProfesorComponent } from './components/cuestionario/add-cuestiona
 import { ViewReporteComponent } from './components/reporte/view-reporte/view-reporte.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { SearchProgramaComponent } from './components/cuestionario/add-cuestionario/search-programa/search-programa.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ChartsModule } from 'ng2-charts';
     AddCuestionarioComponent,
     SearchInfanteComponent,
     SearchProfesorComponent,
-    ViewReporteComponent
+    ViewReporteComponent,
+    SearchProgramaComponent
   ],
   imports: [
     BrowserModule,

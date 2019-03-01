@@ -24,7 +24,7 @@
 
         <form>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label>Nombre Encuesta: </label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -33,13 +33,25 @@
                 <input type="text" class="form-control" value="DSM-V" disabled>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
               <label>Fecha: </label>
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
                 <input type="date" class="form-control" [(ngModel)]="cuestionario.fecha" name="fecha">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label>Programa: </label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input *ngIf="cuestionario.programa" type="text" class="form-control" value="{{cuestionario.programa.descripcion}}">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-light" type="button" (click) = "abrirModal3()"><img src="../../../assets/img/search.png"></button>
+                </div>
               </div>
             </div>
           </div>
@@ -127,3 +139,4 @@
 </div>
 <app-search-infante></app-search-infante>
 <app-search-profesor></app-search-profesor>
+<app-search-programa></app-search-programa>

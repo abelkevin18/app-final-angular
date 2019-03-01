@@ -11,6 +11,8 @@ import { Resultadocuestionario } from 'src/app/model/resultadocuestionario';
 import { Detalleresultado } from 'src/app/model/detalleresultado';
 import { ResultadocuestionarioService } from 'src/app/service/resultadocuestionario.service';
 import { Programa } from 'src/app/model/programa';
+import { ProgramaService } from 'src/app/service/programa.service';
+import { ModalProgramaService } from './modal-programa.service';
 @Component({
   selector: 'app-add-cuestionario',
   templateUrl: './add-cuestionario.component.html',
@@ -48,6 +50,8 @@ export class AddCuestionarioComponent implements OnInit {
     private modalProfesorService: ModalProfesorService,
     private cuestionarioService: CuestionarioService,
     private resultadoCuestionarioService: ResultadocuestionarioService,
+    private programaService: ProgramaService,
+    private modalProgramaService: ModalProgramaService,
     private router: Router) { }
 
   private errores: string[];
@@ -66,13 +70,21 @@ export class AddCuestionarioComponent implements OnInit {
         profesor => {
           this.cuestionario.profesor = profesor;
         }
-      )
+    );
+
+    this.modalProgramaService.notificarUpload
+      .subscribe(
+        programa => {
+          this.cuestionario.programa = programa;
+        }
+    );
   }
 
   saveCuestionario(): void {
 
     
     this.cuestionario.nombre = "DSM-V";
+    //this.programa = this.programaService.getPrograma(1);
 
     /*console.log(this.cuestionario.infante);
     console.log(this.cuestionario.profesor);
@@ -175,6 +187,10 @@ export class AddCuestionarioComponent implements OnInit {
 
   abrirModal2(): void {
     this.modalProfesorService.abrirModal();
+  }
+
+  abrirModal3(): void {
+    this.modalProgramaService.abrirModal();
   }
 
 
