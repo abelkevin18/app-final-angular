@@ -26,6 +26,9 @@ import { ViewReporteComponent } from './components/reporte/view-reporte/view-rep
 
 import { ChartsModule } from 'ng2-charts';
 import { SearchProgramaComponent } from './components/cuestionario/add-cuestionario/search-programa/search-programa.component';
+import { AddInstitucionComponent } from './components/institucion/add-institucion/add-institucion.component';
+import { ListInstitucionComponent } from './components/institucion/list-institucion/list-institucion.component';
+import { EditInstitucionComponent } from './components/institucion/edit-institucion/edit-institucion.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { SearchProgramaComponent } from './components/cuestionario/add-cuestiona
     SearchInfanteComponent,
     SearchProfesorComponent,
     ViewReporteComponent,
-    SearchProgramaComponent
+    SearchProgramaComponent,
+    AddInstitucionComponent,
+    ListInstitucionComponent,
+    EditInstitucionComponent
   ],
   imports: [
     BrowserModule,

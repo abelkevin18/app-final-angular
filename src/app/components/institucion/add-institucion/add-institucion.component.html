@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <!-- menubar  -->
+  <app-menubar></app-menubar>
+  <!-- end menubar-->
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <!--navbar-->
+    <app-navbar></app-navbar>
+    <!--fin navbar-->
+
+    <div class="card">
+      <div class="card-header">
+        <b>REGISTRAR INSTITUCION EDUCATIVA</b>
+      </div>
+      <div class="card-body">
+
+        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+          <li *ngFor="let err of errores">
+            {{ err }}
+          </li>
+        </ul>
+
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Nombre:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="institucion.nombre" name="nombre">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Dirección:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="institucion.direccion" name="direccion">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label>Teléfono:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="institucion.telefono" name="telefono">
+              </div>
+            </div>
+
+          </div>
+
+          <br>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button class="btn btn-primary" role="button" (click)="create()">Registrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
