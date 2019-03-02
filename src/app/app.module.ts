@@ -29,6 +29,9 @@ import { SearchProgramaComponent } from './components/cuestionario/add-cuestiona
 import { AddInstitucionComponent } from './components/institucion/add-institucion/add-institucion.component';
 import { ListInstitucionComponent } from './components/institucion/list-institucion/list-institucion.component';
 import { EditInstitucionComponent } from './components/institucion/edit-institucion/edit-institucion.component';
+import { AddProgramaComponent } from './components/programa/add-programa/add-programa.component';
+import { EditProgramaComponent } from './components/programa/edit-programa/edit-programa.component';
+import { ListProgramaComponent } from './components/programa/list-programa/list-programa.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { EditInstitucionComponent } from './components/institucion/edit-instituc
     SearchProgramaComponent,
     AddInstitucionComponent,
     ListInstitucionComponent,
-    EditInstitucionComponent
+    EditInstitucionComponent,
+    AddProgramaComponent,
+    EditProgramaComponent,
+    ListProgramaComponent
   ],
   imports: [
     BrowserModule,

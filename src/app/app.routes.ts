@@ -13,6 +13,9 @@ import { ViewReporteComponent } from './components/reporte/view-reporte/view-rep
 import { AddInstitucionComponent } from './components/institucion/add-institucion/add-institucion.component';
 import { ListInstitucionComponent } from './components/institucion/list-institucion/list-institucion.component';
 import { EditInstitucionComponent } from './components/institucion/edit-institucion/edit-institucion.component';
+import { AddProgramaComponent } from './components/programa/add-programa/add-programa.component';
+import { ListProgramaComponent } from './components/programa/list-programa/list-programa.component';
+import { EditProgramaComponent } from './components/programa/edit-programa/edit-programa.component';
 
 
 export const routes: Routes = [
@@ -30,6 +33,9 @@ export const routes: Routes = [
     { path: 'add-institucion', component: AddInstitucionComponent },
     { path: 'list-institucion', component: ListInstitucionComponent },
     { path: 'edit-institucion/:id', component: EditInstitucionComponent },
+    { path: 'add-programa', component: AddProgramaComponent },
+    { path: 'list-programa', component: ListProgramaComponent },
+    { path: 'edit-programa/:id', component: EditProgramaComponent },
     { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];

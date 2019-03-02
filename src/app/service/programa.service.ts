@@ -31,8 +31,45 @@ export class ProgramaService {
     return this.http.get<Programa>(`${this.urlEndPoint}/${id}`)
     .pipe(
       catchError(e => {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/list-programa']);
         swal.fire('Error al editar', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    );
+  }
+
+
+  create(programa: Programa) : Observable<any> {
+    return this.http
+    .post<any>(this.urlEndPoint, programa, {headers: this.httpHeaders})
+    .pipe(
+      catchError(e => {
+        if(e.status==400) {
+          return throwError(e);
+        }
+      })
+    );
+  }
+
+  update(programa: Programa): Observable<any> {
+    return this.http
+    .put<any>(`${this.urlEndPoint}/${programa.idprograma}`, programa, {headers: this.httpHeaders})
+    .pipe(
+      catchError(e => {
+        if(e.status==400) {
+          return throwError(e);
+        }
+      })
+    );
+  }
+
+  delete(id: number): Observable<Programa>{
+    return this.http
+    .delete<Programa>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+    .pipe( 
+      catchError(e => {
+        this.router.navigate(['/list-programa']);
+        swal.fire('Error al eliminar al programa', e.error.mensaje, 'error');
         return throwError(e);
       })
     );

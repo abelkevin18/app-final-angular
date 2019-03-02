@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <!-- menubar  -->
+  <app-menubar></app-menubar>
+  <!-- end menubar-->
+
+  <!-- Page Content  -->
+  <div id="content">
+
+    <!--navbar-->
+    <app-navbar></app-navbar>
+    <!--fin navbar-->
+
+    <div class="card">
+      <div class="card-header">
+        <b>EDITAR PROGRAMA</b>
+      </div>
+      <div class="card-body">
+
+        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+          <li *ngFor="let err of errores">
+            {{ err }}
+          </li>
+        </ul>
+
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Descripcion:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Descripcion" [(ngModel)]="programa.descripcion"
+                  name="descripcion">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label>Observaciones:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Observaciones" [(ngModel)]="programa.observaciones"
+                  name="observaciones">
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <button class="btn btn-warning" role="button" (click)="editar()">Editar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
